@@ -28,9 +28,10 @@
     </div>
 
     <div th:fragment="display-table">
+        <h3 th:if="${jobs}" th:text="${jobs.size()} + ' Result(s)'"></h3>
         <table class="job-listing" th:if="${jobs}" th:each="job : ${jobs}">
             <tr th:each="column : ${job}">
-                <td th:for="${column.key}" th:text="${column.key}"></td>
+                <td th:for="${column.key}" th:text="${#strings.capitalizeWords(column.key)}"></td>
                 <td th:for="${column.key}" th:text="${column.value}"></td>
             </tr>
         </table>
